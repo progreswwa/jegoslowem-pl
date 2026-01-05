@@ -1,22 +1,22 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Global Error Handler for debugging
-    window.onerror = function(msg, url, line, col, error) {
+    window.onerror = function (msg, url, line, col, error) {
         console.error("Global Error:", msg, "Line:", line, error);
         alert("Błąd krytyczny JS: " + msg + " (Linia: " + line + ")");
     };
 
     try {
-    console.log("Main.js started");
-    var mainContent = document.getElementById('main-content');
-    var mobileMenuButton = document.getElementById('mobile-menu-button');
-    var mobileMenuClose = document.getElementById('mobile-menu-close');
-    var themeToggles = document.querySelectorAll('.theme-toggle');
-    var scrollToTopBtn = document.getElementById('scroll-to-top');
-    var metaDescription = document.querySelector('meta[name="description"]');
+        console.log("Main.js started");
+        var mainContent = document.getElementById('main-content');
+        var mobileMenuButton = document.getElementById('mobile-menu-button');
+        var mobileMenuClose = document.getElementById('mobile-menu-close');
+        var themeToggles = document.querySelectorAll('.theme-toggle');
+        var scrollToTopBtn = document.getElementById('scroll-to-top');
+        var metaDescription = document.querySelector('meta[name="description"]');
 
-    // === DYNAMIC CONTENT (Replaced Tailwind with Semantic Classes) ===
-    var pageContents = {
-        'home': `
+        // === DYNAMIC CONTENT (Replaced Tailwind with Semantic Classes) ===
+        var pageContents = {
+            'home': `
             <section id="home-hero" class="hero section">
             <div class="container hero-content">
                 <div class="hero-text">
@@ -31,32 +31,40 @@ document.addEventListener('DOMContentLoaded', function () {
                         <q>Oto czynię wszystko nowym.</q> — Ap 21:5
                     </div>
                     
-                    <!-- Trust Bar -->
-                    <div class="trust-bar mt-8">
-                        <div class="trust-bar-item">
-                            <i class="fas fa-shield-alt"></i>
-                            <span>100% Poufność</span>
+                    <!-- Enhanced Trust Bar -->
+                    <div class="trust-bar-premium mt-8">
+                        <div class="trust-item">
+                            <div class="trust-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="trust-text">
+                                <span class="trust-title">100% Poufność</span>
+                                <span class="trust-desc">Pełna dyskrecja</span>
+                            </div>
                         </div>
-                        <div class="trust-bar-item">
-                            <i class="fas fa-laptop"></i>
-                            <span>Online lub stacjonarnie</span>
+                        <div class="trust-item">
+                            <div class="trust-icon">
+                                <i class="fas fa-laptop"></i>
+                            </div>
+                            <div class="trust-text">
+                                <span class="trust-title">Online lub stacjonarnie</span>
+                                <span class="trust-desc">Elastyczna forma</span>
+                            </div>
                         </div>
-                        <div class="trust-bar-item">
-                            <i class="fas fa-certificate"></i>
-                            <span>Certyfikowany coach</span>
+                        <div class="trust-item">
+                            <div class="trust-icon">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <div class="trust-text">
+                                <span class="trust-title">Certyfikowany coach</span>
+                                <span class="trust-desc">15+ lat doświadczenia</span>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                
-                <div class="hero-image-wrapper">
-                    <div class="ring-glow"></div>
-                    <div class="ring-glow"></div>
-                    <div class="ring-portrait">
-                        <img src="images/krzysztof-scena.jpg" alt="Krzysztof - Portret" loading="eager">
                     </div>
                 </div>
             </div>
             </section>
+
 
             <section id="home-znasz-to" class="section">
                 <div class="container">
@@ -103,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
             </section>
         `,
-        'o-mnie': `
+            'o-mnie': `
             <section id="o-mnie" class="section">
                 <div class="container">
                     <div class="section-header">
@@ -204,7 +212,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
             </section>
         `,
-        'jak-pracuje': `
+            'jak-pracuje': `
             <section id="jak-pracuje" class="section">
                 <div class="container">
                     <div class="section-header">
@@ -269,7 +277,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>
                 </div>
             </section>`,
-        'dla-kogo': `
+            'dla-kogo': `
             <section id="dla-kogo" class="section">
                 <div class="container">
                     <div class="section-header">
@@ -363,7 +371,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>
                 </div>
             </section>`,
-        'co-zyskasz': `
+            'co-zyskasz': `
             <section id="co-zyskasz" class="section">
                 <div class="container">
                     <div class="section-header">
@@ -389,7 +397,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>
                 </div>
             </section>`,
-        'program-przebudzenie-relacji': `
+            'program-przebudzenie-relacji': `
              <section id="program" class="section program-section">
                 <div class="container">
                     <!-- Hero Header -->
@@ -523,7 +531,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>
                 </div>
              </section>`,
-        'opinie': `
+            'opinie': `
             <section id="opinie" class="section">
                 <div class="container">
                     <div class="section-header">
@@ -578,7 +586,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>
                 </div>
             </section>`,
-        'faq': `
+            'faq': `
             <section id="faq" class="section">
                 <div class="container faq-container">
                     <div class="section-header">
@@ -636,7 +644,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>
                 </div>
             </section>`,
-        'cennik': `
+            'cennik': `
             <section id="cennik" class="section">
                 <div class="container">
                     <div class="section-header">
@@ -800,7 +808,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     </section>
                 </div>
             </section>`,
-        'blog': `
+            'blog': `
             <section id="blog" class="section">
                 <div class="container">
                     <div class="section-header">
@@ -865,7 +873,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     </section>
                 </div>
             </section>`,
-        'kontakt': `
+            'kontakt': `
             <section id="kontakt" class="section">
                 <div class="container">
                     <div class="section-header">
@@ -923,297 +931,297 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>
                 </div>
             </section>`,
-        'polityka-prywatnosci': `<section class="section container"><h1>Polityka Prywatności</h1><p>Treść polityki...</p></section>`,
-        'dziekujemy': `<section class="section container text-center"><h1>Dziękuję!</h1><p>Wiadomość wysłana pomyślnie.</p><a href="#home" data-route="home" class="btn btn-outline mt-4">Powrót</a></section>`
-    };
+            'polityka-prywatnosci': `<section class="section container"><h1>Polityka Prywatności</h1><p>Treść polityki...</p></section>`,
+            'dziekujemy': `<section class="section container text-center"><h1>Dziękuję!</h1><p>Wiadomość wysłana pomyślnie.</p><a href="#home" data-route="home" class="btn btn-outline mt-4">Powrót</a></section>`
+        };
 
-    var routesMeta = {
-        'home': { title: 'Przebudzenie Relacji – Jego Słowem', desc: 'Pomagam osobom i parom budować zdrowe, głębokie relacje w oparciu o solidne fundamenty psychologiczne i wartości chrześcijańskie.' },
-        'o-mnie': { title: 'O mnie', desc: 'Poznaj moją historię i misję jako coacha relacji. Dowiedz się, dlaczego pomagam innym w budowaniu autentycznych więzi.' },
-        'jak-pracuje': { title: 'Jak pracuję', desc: 'Poznaj mój proces współpracy, formaty spotkań oraz sprawdzone 4 kroki prowadzące do realnej zmiany w relacjach.' },
-        'dla-kogo': { title: 'Dla kogo', desc: 'Sprawdź, czy moja oferta jest dla Ciebie. Pracuję z osobami indywidualnymi, parami oraz liderami pragnącymi poprawić komunikację.' },
-        'co-zyskasz': { title: 'Co zyskasz', desc: 'Zobacz konkretne efekty i korzyści płynące ze współpracy. Zyskaj głębsze zrozumienie siebie i narzędzia do budowania zdrowych relacji.' },
-        'program-przebudzenie-relacji': { title: 'Program Przebudzenie Relacji', desc: 'Odkryj flagowy program, który krok po kroku przeprowadzi Cię przez proces transformacji osobistej i relacyjnej.' },
-        'opinie': { title: 'Opinie', desc: 'Przeczytaj, co o współpracy mówią moi klienci. Poznaj realne historie i efekty naszej wspólnej pracy.' },
-        'faq': { title: 'FAQ', desc: 'Znajdź odpowiedzi na najczęściej zadawane pytania dotyczące coachingu, procesu, poufności i różnic między coachingiem a terapią.' },
-        'cennik': { title: 'Cennik', desc: 'Sprawdź aktualne ceny konsultacji i pakietów coachingowych dla osób indywidualnych, par oraz liderów.' },
-        'blog': { title: 'Blog', desc: 'Znajdź inspiracje i praktyczne porady dotyczące relacji, komunikacji i wiary w praktyce. Skorzystaj z generatora pomysłów na wpisy.' },
-        'kontakt': { title: 'Kontakt', desc: 'Umów bezpłatną 20-minutową konsultację. Wypełnij formularz lub skontaktuj się bezpośrednio, aby rozpocząć pracę nad swoimi relacjami.' },
-        'polityka-prywatnosci': { title: 'Polityka Prywatności', desc: 'Zapoznaj się z zasadami przetwarzania danych osobowych na stronie JegoSłowem.' },
-        'dziekujemy': { title: 'Dziękujemy za wiadomość', desc: 'Potwierdzenie wysłania formularza kontaktowego.' }
-    };
+        var routesMeta = {
+            'home': { title: 'Przebudzenie Relacji – Jego Słowem', desc: 'Pomagam osobom i parom budować zdrowe, głębokie relacje w oparciu o solidne fundamenty psychologiczne i wartości chrześcijańskie.' },
+            'o-mnie': { title: 'O mnie', desc: 'Poznaj moją historię i misję jako coacha relacji. Dowiedz się, dlaczego pomagam innym w budowaniu autentycznych więzi.' },
+            'jak-pracuje': { title: 'Jak pracuję', desc: 'Poznaj mój proces współpracy, formaty spotkań oraz sprawdzone 4 kroki prowadzące do realnej zmiany w relacjach.' },
+            'dla-kogo': { title: 'Dla kogo', desc: 'Sprawdź, czy moja oferta jest dla Ciebie. Pracuję z osobami indywidualnymi, parami oraz liderami pragnącymi poprawić komunikację.' },
+            'co-zyskasz': { title: 'Co zyskasz', desc: 'Zobacz konkretne efekty i korzyści płynące ze współpracy. Zyskaj głębsze zrozumienie siebie i narzędzia do budowania zdrowych relacji.' },
+            'program-przebudzenie-relacji': { title: 'Program Przebudzenie Relacji', desc: 'Odkryj flagowy program, który krok po kroku przeprowadzi Cię przez proces transformacji osobistej i relacyjnej.' },
+            'opinie': { title: 'Opinie', desc: 'Przeczytaj, co o współpracy mówią moi klienci. Poznaj realne historie i efekty naszej wspólnej pracy.' },
+            'faq': { title: 'FAQ', desc: 'Znajdź odpowiedzi na najczęściej zadawane pytania dotyczące coachingu, procesu, poufności i różnic między coachingiem a terapią.' },
+            'cennik': { title: 'Cennik', desc: 'Sprawdź aktualne ceny konsultacji i pakietów coachingowych dla osób indywidualnych, par oraz liderów.' },
+            'blog': { title: 'Blog', desc: 'Znajdź inspiracje i praktyczne porady dotyczące relacji, komunikacji i wiary w praktyce. Skorzystaj z generatora pomysłów na wpisy.' },
+            'kontakt': { title: 'Kontakt', desc: 'Umów bezpłatną 20-minutową konsultację. Wypełnij formularz lub skontaktuj się bezpośrednio, aby rozpocząć pracę nad swoimi relacjami.' },
+            'polityka-prywatnosci': { title: 'Polityka Prywatności', desc: 'Zapoznaj się z zasadami przetwarzania danych osobowych na stronie JegoSłowem.' },
+            'dziekujemy': { title: 'Dziękujemy za wiadomość', desc: 'Potwierdzenie wysłania formularza kontaktowego.' }
+        };
 
-    function updateStructuredData(route) {
-        document.querySelectorAll('script[type="application/ld+json"]').forEach(e => e.remove());
-        let schema = null;
-        if (route === 'home') {
-            schema = {
-                "@context": "https://schema.org", "@type": "Organization",
-                "name": "JegoSłowem", "url": window.location.href.split('#')[0],
-                "logo": window.location.href.split('#')[0] + "logo.png", // Use real logo path
-                "contactPoint": { "@type": "ContactPoint", "contactType": "customer support", "email": "kontakt@przyklad.pl" }
-            };
+        function updateStructuredData(route) {
+            document.querySelectorAll('script[type="application/ld+json"]').forEach(e => e.remove());
+            let schema = null;
+            if (route === 'home') {
+                schema = {
+                    "@context": "https://schema.org", "@type": "Organization",
+                    "name": "JegoSłowem", "url": window.location.href.split('#')[0],
+                    "logo": window.location.href.split('#')[0] + "logo.png", // Use real logo path
+                    "contactPoint": { "@type": "ContactPoint", "contactType": "customer support", "email": "kontakt@przyklad.pl" }
+                };
+            }
+
+            if (schema) {
+                const script = document.createElement('script');
+                script.type = 'application/ld+json';
+                script.textContent = JSON.stringify(schema);
+                document.head.appendChild(script);
+            }
         }
 
-        if (schema) {
-            const script = document.createElement('script');
-            script.type = 'application/ld+json';
-            script.textContent = JSON.stringify(schema);
-            document.head.appendChild(script);
-        }
-    }
-
-    function handleGenerateBlogIdea() {
-        alert("Generator pomysłów na bloga - funkcja w przygotowaniu.");
-    }
-
-    function updatePage(route) {
-        console.log("Updating page to:", route);
-        if (!pageContents[route]) {
-            console.warn("Route not found:", route, "Redirecting to home");
-            route = 'home';
+        function handleGenerateBlogIdea() {
+            alert("Generator pomysłów na bloga - funkcja w przygotowaniu.");
         }
 
-        let content = pageContents[route];
-        if (!mainContent) {
-            console.error("Critical: main-content element not found!");
-            return;
-        }
-        mainContent.innerHTML = content;
+        function updatePage(route) {
+            console.log("Updating page to:", route);
+            if (!pageContents[route]) {
+                console.warn("Route not found:", route, "Redirecting to home");
+                route = 'home';
+            }
 
-        const meta = routesMeta[route] || { title: route.charAt(0).toUpperCase() + route.slice(1), desc: routesMeta['home'].desc };
-        document.title = `${meta.title} | JegoSłowem`;
-        if (route === 'home') document.title = routesMeta['home'].title;
-        if (metaDescription) metaDescription.setAttribute('content', meta.desc);
+            let content = pageContents[route];
+            if (!mainContent) {
+                console.error("Critical: main-content element not found!");
+                return;
+            }
+            mainContent.innerHTML = content;
 
-        updateStructuredData(route);
+            const meta = routesMeta[route] || { title: route.charAt(0).toUpperCase() + route.slice(1), desc: routesMeta['home'].desc };
+            document.title = `${meta.title} | JegoSłowem`;
+            if (route === 'home') document.title = routesMeta['home'].title;
+            if (metaDescription) metaDescription.setAttribute('content', meta.desc);
 
-        // Update active link state
-        document.querySelectorAll('.desktop-menu a, .mobile-links a').forEach(link => {
-            link.classList.remove('active');
-            // Simplified active check for hash based routing
-            if (link.getAttribute('href') === `#${route}`) link.classList.add('active');
-        });
+            updateStructuredData(route);
 
-        window.scrollTo(0, 0);
-        setTimeout(initScrollReveal, 100);
-
-        if (route === 'blog') {
-            const btn = document.getElementById('generate-blog-idea-btn');
-            if (btn) btn.addEventListener('click', handleGenerateBlogIdea);
-        }
-
-        if (document.getElementById('contact-form')) {
-            const form = document.getElementById('contact-form');
-            const inputs = form.querySelectorAll('input, textarea');
-            
-            inputs.forEach(input => {
-                input.addEventListener('blur', () => validateField(input));
-                input.addEventListener('input', () => {
-                    const formGroup = input.closest('.form-group');
-                    if (formGroup) {
-                        formGroup.classList.remove('has-error');
-                        const errorMsg = formGroup.querySelector('.form-error');
-                        if (errorMsg) errorMsg.remove();
-                    }
-                });
+            // Update active link state
+            document.querySelectorAll('.desktop-menu a, .mobile-links a').forEach(link => {
+                link.classList.remove('active');
+                // Simplified active check for hash based routing
+                if (link.getAttribute('href') === `#${route}`) link.classList.add('active');
             });
-            
-            form.addEventListener('submit', function (e) {
-                e.preventDefault();
-                
-                let isValid = true;
+
+            window.scrollTo(0, 0);
+            setTimeout(initScrollReveal, 100);
+
+            if (route === 'blog') {
+                const btn = document.getElementById('generate-blog-idea-btn');
+                if (btn) btn.addEventListener('click', handleGenerateBlogIdea);
+            }
+
+            if (document.getElementById('contact-form')) {
+                const form = document.getElementById('contact-form');
+                const inputs = form.querySelectorAll('input, textarea');
+
                 inputs.forEach(input => {
-                    if (!validateField(input)) isValid = false;
-                });
-                
-                if (!isValid) {
-                    const firstError = form.querySelector('.has-error');
-                    if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    return;
-                }
-                
-                const submitBtn = this.querySelector('button[type="submit"]');
-                submitBtn.disabled = true;
-                submitBtn.innerHTML = '⏳ Wysyłanie...';
-                
-                setTimeout(() => {
-                    form.innerHTML = '<div class="text-center" style="padding:3rem;"><div style="width:80px;height:80px;background:var(--gold-gradient);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;"><span style="font-size:2.5rem;">✅</span></div><h2 style="margin-bottom:1rem;">Dziękujemy!</h2><p style="margin-bottom:2rem;">Odezwiemy się w ciągu 24h.</p><a href="#home" data-route="home" class="btn btn-gold">Strona główna</a></div>';
-                }, 1500);
-            });
-        }
-    }
-    
-        function validateField(input) {
-        const formGroup = input.closest('.form-group');
-        if (!formGroup) return true;
-        
-        const value = input.value.trim();
-        let errorMessage = '';
-        
-        if (input.hasAttribute('required') && !value) {
-            errorMessage = 'To pole jest wymagane';
-        }
-        
-        if (input.type === 'email' && value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-            errorMessage = 'Podaj poprawny adres email';
-        }
-        
-        if (input.type === 'tel' && value && !/^[\d\s+()-]{9,}$/.test(value)) {
-            errorMessage = 'Podaj poprawny numer telefonu';
-        }
-        
-        if (input.hasAttribute('minlength')) {
-            const minLength = parseInt(input.getAttribute('minlength'));
-            if (value.length < minLength) {
-                errorMessage = `Minimum ${minLength} znaków`;
-            }
-        }
-        
-        if (errorMessage) {
-            formGroup.classList.add('has-error');
-            formGroup.classList.remove('has-success', 'input-valid');
-            let errorEl = formGroup.querySelector('.form-error');
-            if (!errorEl) {
-                errorEl = document.createElement('span');
-                errorEl.className = 'form-error';
-                formGroup.appendChild(errorEl);
-            }
-            errorEl.textContent = errorMessage;
-            return false;
-        } else {
-            formGroup.classList.remove('has-error');
-            formGroup.classList.add('has-success', 'input-valid');
-            const errorEl = formGroup.querySelector('.form-error');
-            if (errorEl) errorEl.remove();
-            return true;
-        }
-    }
-
-    function router() {
-        let route = window.location.hash.substring(1);
-        if (route === 'konsultacja') { route = 'kontakt'; window.location.hash = 'kontakt'; }
-        updatePage(route || 'home');
-    }
-
-    document.body.addEventListener('click', e => {
-        const link = e.target.closest('a[data-route]');
-        if (link) {
-            e.preventDefault();
-            window.location.hash = link.dataset.route;
-            // Close mobile menu if open
-            if (document.body.classList.contains('mobile-menu-open')) closeMobileMenu();
-        }
-    });
-
-    window.addEventListener('hashchange', router);
-    try {
-        console.log("Initial router call");
-        router();
-    } catch (e) {
-        console.error("Router crashed:", e);
-        alert("Błąd inicjalizacji strony: " + e.message);
-    }
-
-    // Theme Toggle
-    function setTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        // Icon toggling is handled by CSS based on data-theme attribute
-        localStorage.setItem('theme', theme);
-    }
-
-    themeToggles.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            setTheme(currentTheme === 'dark' ? 'light' : 'dark');
-        });
-    });
-
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    setTheme(savedTheme);
-
-    // Mobile Menu
-    mobileMenuButton.addEventListener('click', () => {
-        document.body.classList.add('mobile-menu-open');
-        mobileMenuButton.setAttribute('aria-expanded', 'true');
-    });
-
-    function closeMobileMenu() {
-        document.body.classList.remove('mobile-menu-open');
-        mobileMenuButton.setAttribute('aria-expanded', 'false');
-    }
-
-    if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileMenu);
-
-    // Close on overlay click
-    const mobileOverlay = document.getElementById('mobile-menu-overlay');
-    if (mobileOverlay) mobileOverlay.addEventListener('click', closeMobileMenu);
-
-
-    // Scroll-to-top Button & Navbar Scroll Effect
-    var navbar = document.getElementById('navbar');
-
-    window.addEventListener('scroll', () => {
-        // Scroll-to-top visibility
-        if (window.scrollY > 300) {
-            scrollToTopBtn.classList.add('visible');
-        } else {
-            scrollToTopBtn.classList.remove('visible');
-        }
-
-        // Navbar glassmorphism on scroll
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
-
-    scrollToTopBtn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // === SCROLL-TRIGGERED REVEAL ANIMATIONS ===
-    function initScrollReveal() {
-        const revealElements = document.querySelectorAll('.section-header, .grid-features, .grid-3, .grid-4, .grid-2, .about-grid, .modules-grid, .package-grid, .card.invite-card, .program-hero, .program-modules, .program-package');
-
-        if ('IntersectionObserver' in window) {
-            const revealObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('revealed');
-                        // Add stagger class for grid items
-                        if (entry.target.classList.contains('grid-features') ||
-                            entry.target.classList.contains('grid-3') ||
-                            entry.target.classList.contains('grid-4') ||
-                            entry.target.classList.contains('modules-grid') ||
-                            entry.target.classList.contains('package-grid')) {
-                            entry.target.classList.add('scroll-reveal-stagger');
-                            Array.from(entry.target.children).forEach(child => {
-                                child.classList.add('scroll-reveal');
-                                child.classList.add('revealed');
-                            });
+                    input.addEventListener('blur', () => validateField(input));
+                    input.addEventListener('input', () => {
+                        const formGroup = input.closest('.form-group');
+                        if (formGroup) {
+                            formGroup.classList.remove('has-error');
+                            const errorMsg = formGroup.querySelector('.form-error');
+                            if (errorMsg) errorMsg.remove();
                         }
-                        revealObserver.unobserve(entry.target);
-                    }
+                    });
                 });
-            }, {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            });
 
-            revealElements.forEach(el => {
-                el.classList.add('scroll-reveal');
-                revealObserver.observe(el);
-            });
-        } else {
-            // Fallback for older browsers
-            revealElements.forEach(el => el.classList.add('revealed'));
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
+
+                    let isValid = true;
+                    inputs.forEach(input => {
+                        if (!validateField(input)) isValid = false;
+                    });
+
+                    if (!isValid) {
+                        const firstError = form.querySelector('.has-error');
+                        if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        return;
+                    }
+
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '⏳ Wysyłanie...';
+
+                    setTimeout(() => {
+                        form.innerHTML = '<div class="text-center" style="padding:3rem;"><div style="width:80px;height:80px;background:var(--gold-gradient);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;"><span style="font-size:2.5rem;">✅</span></div><h2 style="margin-bottom:1rem;">Dziękujemy!</h2><p style="margin-bottom:2rem;">Odezwiemy się w ciągu 24h.</p><a href="#home" data-route="home" class="btn btn-gold">Strona główna</a></div>';
+                    }, 1500);
+                });
+            }
         }
-    }
 
-    // Initial call
-    initScrollReveal();
+        function validateField(input) {
+            const formGroup = input.closest('.form-group');
+            if (!formGroup) return true;
+
+            const value = input.value.trim();
+            let errorMessage = '';
+
+            if (input.hasAttribute('required') && !value) {
+                errorMessage = 'To pole jest wymagane';
+            }
+
+            if (input.type === 'email' && value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+                errorMessage = 'Podaj poprawny adres email';
+            }
+
+            if (input.type === 'tel' && value && !/^[\d\s+()-]{9,}$/.test(value)) {
+                errorMessage = 'Podaj poprawny numer telefonu';
+            }
+
+            if (input.hasAttribute('minlength')) {
+                const minLength = parseInt(input.getAttribute('minlength'));
+                if (value.length < minLength) {
+                    errorMessage = `Minimum ${minLength} znaków`;
+                }
+            }
+
+            if (errorMessage) {
+                formGroup.classList.add('has-error');
+                formGroup.classList.remove('has-success', 'input-valid');
+                let errorEl = formGroup.querySelector('.form-error');
+                if (!errorEl) {
+                    errorEl = document.createElement('span');
+                    errorEl.className = 'form-error';
+                    formGroup.appendChild(errorEl);
+                }
+                errorEl.textContent = errorMessage;
+                return false;
+            } else {
+                formGroup.classList.remove('has-error');
+                formGroup.classList.add('has-success', 'input-valid');
+                const errorEl = formGroup.querySelector('.form-error');
+                if (errorEl) errorEl.remove();
+                return true;
+            }
+        }
+
+        function router() {
+            let route = window.location.hash.substring(1);
+            if (route === 'konsultacja') { route = 'kontakt'; window.location.hash = 'kontakt'; }
+            updatePage(route || 'home');
+        }
+
+        document.body.addEventListener('click', e => {
+            const link = e.target.closest('a[data-route]');
+            if (link) {
+                e.preventDefault();
+                window.location.hash = link.dataset.route;
+                // Close mobile menu if open
+                if (document.body.classList.contains('mobile-menu-open')) closeMobileMenu();
+            }
+        });
+
+        window.addEventListener('hashchange', router);
+        try {
+            console.log("Initial router call");
+            router();
+        } catch (e) {
+            console.error("Router crashed:", e);
+            alert("Błąd inicjalizacji strony: " + e.message);
+        }
+
+        // Theme Toggle
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            // Icon toggling is handled by CSS based on data-theme attribute
+            localStorage.setItem('theme', theme);
+        }
+
+        themeToggles.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+            });
+        });
+
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        setTheme(savedTheme);
+
+        // Mobile Menu
+        mobileMenuButton.addEventListener('click', () => {
+            document.body.classList.add('mobile-menu-open');
+            mobileMenuButton.setAttribute('aria-expanded', 'true');
+        });
+
+        function closeMobileMenu() {
+            document.body.classList.remove('mobile-menu-open');
+            mobileMenuButton.setAttribute('aria-expanded', 'false');
+        }
+
+        if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileMenu);
+
+        // Close on overlay click
+        const mobileOverlay = document.getElementById('mobile-menu-overlay');
+        if (mobileOverlay) mobileOverlay.addEventListener('click', closeMobileMenu);
+
+
+        // Scroll-to-top Button & Navbar Scroll Effect
+        var navbar = document.getElementById('navbar');
+
+        window.addEventListener('scroll', () => {
+            // Scroll-to-top visibility
+            if (window.scrollY > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+
+            // Navbar glassmorphism on scroll
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // === SCROLL-TRIGGERED REVEAL ANIMATIONS ===
+        function initScrollReveal() {
+            const revealElements = document.querySelectorAll('.section-header, .grid-features, .grid-3, .grid-4, .grid-2, .about-grid, .modules-grid, .package-grid, .card.invite-card, .program-hero, .program-modules, .program-package');
+
+            if ('IntersectionObserver' in window) {
+                const revealObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('revealed');
+                            // Add stagger class for grid items
+                            if (entry.target.classList.contains('grid-features') ||
+                                entry.target.classList.contains('grid-3') ||
+                                entry.target.classList.contains('grid-4') ||
+                                entry.target.classList.contains('modules-grid') ||
+                                entry.target.classList.contains('package-grid')) {
+                                entry.target.classList.add('scroll-reveal-stagger');
+                                Array.from(entry.target.children).forEach(child => {
+                                    child.classList.add('scroll-reveal');
+                                    child.classList.add('revealed');
+                                });
+                            }
+                            revealObserver.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                });
+
+                revealElements.forEach(el => {
+                    el.classList.add('scroll-reveal');
+                    revealObserver.observe(el);
+                });
+            } else {
+                // Fallback for older browsers
+                revealElements.forEach(el => el.classList.add('revealed'));
+            }
+        }
+
+        // Initial call
+        initScrollReveal();
 
     } catch (error) {
         console.error("Critical Error in main.js:", error);
