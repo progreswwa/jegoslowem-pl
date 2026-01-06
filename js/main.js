@@ -17,53 +17,37 @@ document.addEventListener('DOMContentLoaded', function () {
         // === DYNAMIC CONTENT (Replaced Tailwind with Semantic Classes) ===
         var pageContents = {
             'home': `
-            <section id="home-hero" class="hero section">
-            <div class="container hero-content">
-                <div class="hero-text">
+            <section id="home-hero" class="hero hero-centered section">
+            <div class="container">
+                <div class="hero-text-centered">
                     <span class="hero-tag">Coaching • Mentoring • Consulting</span>
                     <h1 class="hero-title">Przebudzenie <span class="text-gold">Relacji</span></h1>
                     <p class="hero-desc">Pomagam przywracać utracone i budować trwałe relacje w oparciu o wartości Słowa Bożego. Przeprowadzam przez drogę prawdy, uzdrowienia i miłości.</p>
-                    <div class="flex-row gap-4" style="display:flex; gap: 1rem; flex-wrap: wrap;">
+                    
+                    <div class="hero-cta-group">
                         <a href="#kontakt" data-route="kontakt" class="btn btn-gold">Umów się na rozmowę</a>
                         <a href="#program" data-route="program" class="btn btn-outline">Zobacz ofertę</a>
                     </div>
-                    <div class="mt-8 opacity-80 italic">
-                        <q>Oto czynię wszystko nowym.</q> — Ap 21:5
-                    </div>
                     
-                    <!-- Enhanced Trust Bar -->
-                    <div class="trust-bar-premium mt-8">
-                        <div class="trust-item">
-                            <div class="trust-icon">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                            <div class="trust-text">
-                                <span class="trust-title">100% Poufność</span>
-                                <span class="trust-desc">Pełna dyskrecja</span>
-                            </div>
-                        </div>
-                        <div class="trust-item">
-                            <div class="trust-icon">
-                                <i class="fas fa-laptop"></i>
-                            </div>
-                            <div class="trust-text">
-                                <span class="trust-title">Online lub stacjonarnie</span>
-                                <span class="trust-desc">Elastyczna forma</span>
-                            </div>
-                        </div>
-                        <div class="trust-item">
-                            <div class="trust-icon">
-                                <i class="fas fa-certificate"></i>
-                            </div>
-                            <div class="trust-text">
-                                <span class="trust-title">Certyfikowany coach</span>
-                                <span class="trust-desc">15+ lat doświadczenia</span>
-                            </div>
-                        </div>
+                    <!-- Elegant Quote -->
+                    <blockquote class="hero-quote">
+                        <span class="quote-ornament">❝</span>
+                        <p class="quote-text">Oto czynię wszystko nowym.</p>
+                        <cite class="quote-source">— Ap 21:5</cite>
+                    </blockquote>
+                    
+                    <!-- Subtle Trust Indicators -->
+                    <div class="trust-subtle">
+                        <span class="trust-badge"><i class="fas fa-shield-alt"></i> Poufność</span>
+                        <span class="trust-divider">•</span>
+                        <span class="trust-badge"><i class="fas fa-video"></i> Online / Stacjonarnie</span>
+                        <span class="trust-divider">•</span>
+                        <span class="trust-badge"><i class="fas fa-award"></i> 15+ lat doświadczenia</span>
                     </div>
                 </div>
             </div>
             </section>
+
 
 
             <section id="home-znasz-to" class="section">
